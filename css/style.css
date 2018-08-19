@@ -7530,13 +7530,13 @@ sup {
   top: -.5em; }
 
 a {
-  color: #183a5e;
+  color: #007bff;
   text-decoration: none;
   background-color: transparent;
   -webkit-text-decoration-skip: objects; }
   a:hover {
-    color: #183a5e;
-    text-decoration: underline; } /*changing this area*/
+    color: #0056b3;
+    text-decoration: underline; }
 
 a:not([href]):not([tabindex]) {
   color: inherit;
@@ -8656,7 +8656,7 @@ pre {
     background-color: transparent;
     border: 0; }
   .form-control:focus {
-    color: #495057;
+    color: #4B0082;
     background-color: #fff;
     border-color: #80bdff;
     outline: 0;
@@ -9776,7 +9776,7 @@ tbody.collapse.show {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1;
-  color: #495057;
+  color: #4B0082;
   text-align: center;
   white-space: nowrap;
   background-color: #e9ecef;
@@ -13255,6 +13255,7 @@ button.bg-dark:focus {
   text-align: right !important; }
 
 .text-center {
+  color:rgb(255, 255, 255);
   text-align: center !important; }
 
 @media (min-width: 576px) {
@@ -16301,11 +16302,4 @@ ul {
   .error-page .error-page-divider {
     border-left: 3px solid rgba(255, 255, 255, 0.2); } }
 
-
-    #navBarBg{
-      background: #4B0082;
-    }
-    
 /*# sourceMappingURL=maps/style.css.map */
-
-
