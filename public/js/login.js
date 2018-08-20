@@ -1,24 +1,28 @@
 
-// Get the modal
-var modal = document.getElementById('id01');
-
 var currentUserName;
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-$(".login-button").on("click", function(){
-currentUserName = $(".usernameVal").val().trim()
+var password;
+
+localStorage.removeItem("user");
+
+$("#login-button").on("click", function () {
+    event.preventDefault();
+
+    currentUserName = $("#username-val").val().trim();
+    password = $("#password-val").val().trim();
+
+    // console.log(currentUserName);
+
+    window.location.href = "../user-profile.html";
+
+    $.get("/api/authors/" + currentUserName + "/" + password, function (data) {
+        
+        
+        localStorage.setItem("user", data.id)
+        console.log(localStorage);
+
+    });
+    
 })
 
-console.log(currentUserName)
 
-
-$.get("/api/authors/"+ name, function(data) {
-	console.log(data+"dataaaa")
-	console.log(data.name)
-		$(".current-log").append(data.name+ "is currently logged in" +data.Posts);
-		//console.log(newTr)
-    });
+//data.Posts

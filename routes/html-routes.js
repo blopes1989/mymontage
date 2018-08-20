@@ -14,7 +14,7 @@ module.exports = function(app) {
 
   // index route loads view.html
   app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/login.html"));
+    res.sendFile(path.join(__dirname, "../public/pages/samples/register.html"));
   });
 
   // cms route loads cms.html
@@ -32,15 +32,20 @@ module.exports = function(app) {
   });
 
   app.get("/profile", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/profile.html"));
+    res.sendFile(path.join(__dirname, "../public/user-profile.html"));
   });
 
   app.get("/survey", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/survey.html"));
+    res.sendFile(path.join(__dirname, "../public/pages/samples/register.html"));
   });
 
+  // app.get("/userlogged", function(req, res) {
+  //   res.sendFile(path.join(__dirname, "../public/user-profile.html"));
+  // });
+
+
   app.get("/login", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/login.html"));
+    res.sendFile(path.join(__dirname, "../public/pages/samples/login.html"));
   });
 
 
