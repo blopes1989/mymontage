@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
   // Getting jQuery references to the post body, title, form, and author select
   var bodyInput = $("#body");
   var titleInput = $("#title");
@@ -58,7 +58,7 @@ $(document).ready(function() {
 
   // Submits a new post and brings user to blog page upon completion
   function submitPost(post) {
-    $.post("/api/posts", post, function() {
+    $.post("/api/posts", post, function () {
       window.location.href = "/blog";
     });
   }
@@ -67,16 +67,17 @@ $(document).ready(function() {
   function getPostData(id, type) {
     var queryUrl;
     switch (type) {
-    case "post":
-      queryUrl = "/api/posts/" + id;
-      break;
-    case "author":
-      queryUrl = "/api/authors/" + id;
-      break;
-    default:
-      return;
+      case "post":
+        queryUrl = "/api/posts/" + id;
+        break;
+      case "author":
+        queryUrl = "/api/authors/" + id;
+        break;
+      default:
+        return;
     }
-    $.get(queryUrl, function(data) {
+
+    $.get(queryUrl, function (data) {
       if (data) {
         console.log(data.AuthorId || data.id);
         // If this post exists, prefill our cms forms with its data
@@ -126,7 +127,7 @@ $(document).ready(function() {
       url: "/api/posts",
       data: post
     })
-      .then(function() {
+      .then(function () {
         window.location.href = "/blog";
       });
   }

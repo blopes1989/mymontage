@@ -16,10 +16,8 @@ $("#login-button").on("click", function () {
 
     $.get("/api/authors/" + currentUserName + "/" + password, function (data) {
         
-        
         localStorage.setItem("user", data.id)
         console.log(localStorage);
-
     });
     
 })

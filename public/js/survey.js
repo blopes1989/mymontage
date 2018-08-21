@@ -1,10 +1,12 @@
 $("#new-user").on("click", function () {
-  // console.log("test");
-  // console.log("this works");
+
   event.preventDefault();
   var nameInput = $("#user-name").val().trim();
+  var acctualName = $("#name").val().trim();
   var emailInput = $("#email").val().trim();
   var imagLink = $("#img-link").val().trim();
+  var birthdayInput = $("#birthday").val().trim();
+  var gender = $("#sex").val().trim();
   var userPass = $("#password").val().trim();
   var cfpass = $("#pass-conf").val().trim();
 
@@ -14,33 +16,33 @@ $("#new-user").on("click", function () {
   } else {
 
     var userNameObject = {
-      name: nameInput,
+      username: nameInput,
+      name: acctualName,
       email: emailInput,
       profileImage: imagLink,
+      birthday: birthdayInput,
+      sex: gender,
       password: userPass,
       passCon: cfpass
+
     };
-  
+
     console.log(userNameObject);
-   
+
     // Don't do anything if the name fields hasn't been filled out
     if (nameInput = "") {
       console.log("there is no name")
     }
     upsertNewUser(userNameObject);
   }
-  
-
 });
 
 
 function upsertNewUser(NewUserData) {
   console.log(NewUserData);
   $.post("/api/authors", NewUserData)
-    .then(function(res
-    ){
-      window.location.href = "/login"
-    }
-      
-    )
+    .then(function (res
+    ) {
+      window.location.href = "/login";
+    });
 };
