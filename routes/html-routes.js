@@ -14,7 +14,7 @@ module.exports = function(app) {
 
   // index route loads view.html
   app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/pages/samples/register.html"));
+    res.sendFile(path.join(__dirname, "../public/pages/samples/login.html"));
   });
 
   // cms route loads cms.html
@@ -35,6 +35,9 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/user-profile.html"));
   });
 
+  //app.get("/index", function(req, res) {
+   // res.sendFile(path.join(__dirname, "../index.html"));
+  //});
   app.get("/survey", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/pages/samples/register.html"));
   });

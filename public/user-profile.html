@@ -24,11 +24,11 @@
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row" id="navBarBg">
       <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-        <a class="navbar-brand brand-logo" href="#">
-          <img src="images/temp logo.png" alt="logo" />
+        <a class="navbar-brand brand-logo" href="index.html">
+          <img src="images/vfriend.svg" alt="logo" />
         </a>
         <a class="navbar-brand brand-logo-mini" href="index.html">
-          <img src="https://via.placeholder.com/140x100" alt="logo" />
+          <img src="images/vfriend.svg" alt="logo" />
         </a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center">
@@ -284,26 +284,28 @@
       </nav>
       <!-- partial -->
       <div class="container-fluid">
-
-        <div class="col-lg-8 mx-auto">
-          <form>
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <form></form>
             <div class="form-group">
               <label for="newPost"></label>
               <textarea class="form-control" id="newPost" rows="6"></textarea>
-              <button type="submit" class="btn btn-primary mb-2 float-right">Post</button>
+              <button type="submit" class="btn btn-primary mb-2 float-right" id="submitPost">Post</button>
             </div>
-
+            </form>
+          </div>
         </div>
-
+        <div class="row">
+          <div class="card  blog-container" id="timeline">
+            <div class="card-body">
+              <p class="card-text"></p>
+            </div>
+          </div>
+        </div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
           <div class="container-fluid clearfix">
-            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2018
-              <a href="http://www.bootstrapdash.com/" target="_blank">Bootstrapdash</a>. All rights reserved.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with
-              <i class="mdi mdi-heart text-danger"></i>
-            </span>
           </div>
         </footer>
       </div>

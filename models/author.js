@@ -1,7 +1,7 @@
 module.exports = function(sequelize, DataTypes) {
   var Author = sequelize.define("Author", {
     // Giving the Author model a name of type STRING
-    username: DataTypes.STRING,
+    realName: DataTypes.STRING,
     name: DataTypes.STRING,
     email: DataTypes.STRING,
     profileImage: DataTypes.STRING,
@@ -9,9 +9,9 @@ module.exports = function(sequelize, DataTypes) {
     sex: DataTypes.STRING,
     password: DataTypes.STRING,
     passCon: DataTypes.STRING
-    
+ 
   });
-
+ 
   Author.associate = function(models) {
     // Associating Author with Posts
     // When an Author is deleted, also delete any associated Posts
@@ -19,6 +19,6 @@ module.exports = function(sequelize, DataTypes) {
       onDelete: "cascade"
     });
   };
-
+ 
   return Author;
-};
+ };

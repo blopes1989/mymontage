@@ -1,16 +1,103 @@
+var currentUserID = localStorage.getItem("user")
+if (!currentUserID){
+ //window.location.href = "/"
+}
+
 $(document).ready(function () {
 
-  var currentUserID = localStorage.getItem("user")
+
   // Get the modal
   // Getting references to the name input and author container, as well as the table body
   var nameInput = $("#author-name");
   var authorList = $("tbody");
   var authorContainer = $(".author-container");
+  var newPostDiv = $("#newPost")
+  var newPostText;
+  var authorId;
+  var postsContainer = $("#timeline")
   // Adding event listeners to the form to create a new object, and the button to delete
   // an Author
   $(document).on("submit", "#author-form", handleAuthorFormSubmit);
   $(document).on("click", ".delete-author", handleDeleteButtonPress);
 
+  $(document).on("click","#submitPost", function () {
+    event.preventDefault();
+    newPostText = {
+      date: "todays date",
+      body: newPostDiv.val().trim(),
+      AuthorId: currentUserID
+    };
+    console.log("you clicked it")
+    console.log(newPostText)
+    submitPost(newPostText);
+  })
+
+  function submitPost(post) {
+    console.log("Test1")
+    $.post("/api/posts", post, function () {
+      getPosts(currentUserID)
+      console.log("test2")
+    });
+  }
+
+  function getPosts(author) {
+    console.log("test3")
+    authorId = author || "";
+    if (authorId) {
+      authorId = "/?author_id=" + authorId;
+    }
+    $.get("/api/posts" + authorId, function (data) {
+      console.log("Posts", data);
+      posts = data;
+      if (!posts || !posts.length) {
+        displayEmpty();
+      }
+      else {
+        initializeRows();
+      }
+    });
+  }
+  function initializeRows() {
+    postsContainer.empty();
+    var postsToAdd = [];
+    for (var i = 0; i < posts.length; i++) {
+      postsToAdd.push(createNewRow(posts[i]));
+    }
+    postsContainer.append(postsToAdd);
+  }
+  
+getPosts(currentUserID)
+  // This function constructs a post's HTML
+  function createNewRow(post) {
+    var formattedDate = new Date(post.createdAt);
+    formattedDate = moment(formattedDate).format("MMMM Do YYYY, h:mm:ss a");
+    var newPostCard = $("<div>");
+    newPostCard.addClass("card");
+    newPostCard.attr("id", post.id);
+    var newPostCardHeading = $("<div>");
+    newPostCardHeading.addClass("card-header");
+    var deleteBtn = $("<button>");
+    deleteBtn.text("x");
+    deleteBtn.addClass("delete btn btn-danger");
+    var editBtn = $("<button>");
+    editBtn.text("EDIT");
+    editBtn.addClass("edit btn btn-info");
+    var newPostTitle = $("<h4>");
+    var newPostDate = $("<small>");
+    newPostTitle.text(post.body + " ");
+    newPostDate.text(formattedDate);
+    newPostTitle.append(newPostDate);
+    newPostCardHeading.append(deleteBtn);
+    newPostCardHeading.append(editBtn);
+    newPostCardHeading.append(newPostTitle);
+    newPostCard.append(newPostCardHeading);
+    newPostCard.data("post", post);
+    return newPostCard;
+  }
+
+  function displayEmpty() {
+
+  }
   // Getting the initial list of Authors
   //getAuthors();
   console.log(currentUserID);
@@ -41,8 +128,10 @@ $(document).ready(function () {
     userImg.attr("src", data.profileImage);
     imgDiv.append(userImg);
     $("#round-profile-img").attr("src", data.profileImage);
-  
-  }); 
+
+  });
+
+
 
   // A function for creating an author. Calls getAuthors upon completion
   function upsertAuthor(authorData) {
