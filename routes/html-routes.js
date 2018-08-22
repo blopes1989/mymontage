@@ -32,9 +32,12 @@ module.exports = function(app) {
   });
 
   app.get("/profile", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/user-profile.html"));
+    res.sendFile(path.join(__dirname, "../public/user.html"));
   });
 
+  app.get("/newsfeed", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/newsfeed.html"));
+  });
   //app.get("/index", function(req, res) {
    // res.sendFile(path.join(__dirname, "../index.html"));
   //});

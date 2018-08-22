@@ -21,7 +21,7 @@ $("#login-button").on("click", function () {
         
         localStorage.setItem("user", data.id)
         console.log(localStorage);
-        window.location.href = "../user-profile.html";
+        window.location.href = "../newsfeed";
 
     });
     

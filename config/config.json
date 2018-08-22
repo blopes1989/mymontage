@@ -16,7 +16,7 @@
   "production": {
     "username": "root",
     "password": "12345",
-    "database": "database_production",
+    "database": "blogger ",
     "host": "127.0.0.1",
     "use_env_variable":"JawsDB_URL", 
     "dialect": "mysql"
