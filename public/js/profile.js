@@ -1,6 +1,7 @@
 var currentUserID = localStorage.getItem("user")
-if (!currentUserID){
- //window.location.href = "/"
+var currentUsername;
+if (!currentUserID) {
+  //window.location.href = "/"
 }
 
 $(document).ready(function () {
@@ -12,7 +13,6 @@ $(document).ready(function () {
   var authorList = $("tbody");
   var authorContainer = $(".author-container");
   var newPostDiv = $("#newPost")
-  var newPostText;
   var authorId;
   var postsContainer = $("#timeline")
   // Adding event listeners to the form to create a new object, and the button to delete
@@ -20,10 +20,10 @@ $(document).ready(function () {
   $(document).on("submit", "#author-form", handleAuthorFormSubmit);
   $(document).on("click", ".delete-author", handleDeleteButtonPress);
 
-  $(document).on("click","#submitPost", function () {
+  $(document).on("click", "#submitPost", function () {
     event.preventDefault();
-    newPostText = {
-      date: "todays date",
+    var newPostText = {
+      postedBy: currentUsername,
       body: newPostDiv.val().trim(),
       AuthorId: currentUserID
     };
@@ -50,6 +50,7 @@ $(document).ready(function () {
       console.log("Posts", data);
       posts = data;
       if (!posts || !posts.length) {
+
         displayEmpty();
       }
       else {
@@ -57,6 +58,9 @@ $(document).ready(function () {
       }
     });
   }
+  getPosts(currentUserID)
+
+
   function initializeRows() {
     postsContainer.empty();
     var postsToAdd = [];
@@ -65,11 +69,13 @@ $(document).ready(function () {
     }
     postsContainer.append(postsToAdd);
   }
-  
-getPosts(currentUserID)
+
+
   // This function constructs a post's HTML
   function createNewRow(post) {
-    var formattedDate = new Date(post.createdAt);
+    var formattedDate = new Date(post.updatedAt);
+    var updateCreate;
+    if (post.createdAt == post.updatedAt) { updateCreate = "Created at " } else { updateCreate = "Updated at " }
     formattedDate = moment(formattedDate).format("MMMM Do YYYY, h:mm:ss a");
     var newPostCard = $("<div>");
     newPostCard.addClass("card");
@@ -77,26 +83,106 @@ getPosts(currentUserID)
     var newPostCardHeading = $("<div>");
     newPostCardHeading.addClass("card-header");
     var deleteBtn = $("<button>");
-    deleteBtn.text("x");
-    deleteBtn.addClass("delete btn btn-danger");
+    deleteBtn.attr("clicker", post.id);
+    deleteBtn.text("Delete");
+    deleteBtn.addClass("delete-post btn btn-danger");
     var editBtn = $("<button>");
     editBtn.text("EDIT");
-    editBtn.addClass("edit btn btn-info");
-    var newPostTitle = $("<h4>");
+    editBtn.attr("clicker", post.id);
+    editBtn.addClass("edit-post btn btn-info");
+    var newPostBody = $("<h4>");
+    var newPostAuthor = $("<h5>");
     var newPostDate = $("<small>");
-    newPostTitle.text(post.body + " ");
-    newPostDate.text(formattedDate);
-    newPostTitle.append(newPostDate);
-    newPostCardHeading.append(deleteBtn);
+    newPostBody.text(post.body + " ");
+    newPostDate.text(updateCreate + formattedDate);
+    newPostAuthor.text("Posted By: " + post.postedBy)
+    //newPostBody.append(newPostDate);
+    newPostCardHeading.append(newPostBody);
+    newPostCardHeading.append(newPostAuthor);
+    newPostCardHeading.append(newPostDate);
+    newPostCardHeading.append("<br>")
     newPostCardHeading.append(editBtn);
-    newPostCardHeading.append(newPostTitle);
+    newPostCardHeading.append(deleteBtn);
     newPostCard.append(newPostCardHeading);
     newPostCard.data("post", post);
     return newPostCard;
   }
 
   function displayEmpty() {
+    postsContainer.empty();
+    postsContainer.append("<h3>You have no posts yet, make your first post above!</h3>")
+  }
 
+  $(document).on("click", ".delete-post", function () {
+    event.preventDefault();
+    console.log("delete-test")
+    var deleteID = $(this).attr("clicker");
+    console.log(deleteID)
+    $.ajax({
+      method: "DELETE",
+      url: "/api/posts/" + deleteID
+    })
+      .then(function () {
+        getPosts(currentUserID);
+      });
+
+  });
+
+
+  $(document).on("click", ".edit-post", function () {
+    console.log("edit-test")
+    event.preventDefault();
+    var editID = $(this).attr("clicker");
+    var postToEdit = $("#" + editID);
+    postToEdit.empty();
+    var newPostCardHeading = $("<div>");
+    newPostCardHeading.addClass("card-header");
+    var updateBtn = $("<button>");
+    updateBtn.attr("clicker", editID);
+    updateBtn.text("Update");
+    updateBtn.addClass("update-post btn btn-info");
+    var exitBtn = $("<button>");
+    exitBtn.text("Cancel");
+    exitBtn.attr("clicker", editID);
+    exitBtn.addClass("cancel-update btn btn-danger");
+    var newPostUpdate = $("<textarea>");
+    newPostUpdate.addClass("update-textarea " + editID)
+    newPostUpdate.addClass("update-textarea")
+    newPostCardHeading.append(newPostUpdate);
+    newPostCardHeading.append(updateBtn);
+    newPostCardHeading.append(exitBtn);
+    postToEdit.append(newPostCardHeading);
+
+  })
+
+  $(document).on("click", ".update-post", function () {
+    console.log("update-test")
+    var updatePostID = $(this).attr("clicker");
+    var updatedPostText = $("." + updatePostID)
+    var newPostText = {
+      id: updatePostID,
+      postedBy: currentUsername,
+      body: updatedPostText.val().trim(),
+      AuthorId: currentUserID
+    };
+    console.log(newPostText)
+    updatePost(newPostText)
+  });
+
+  $(document).on("click", ".cancel-update", function () {
+    console.log("cancel-test")
+    getPosts(currentUserID)
+  });
+
+  function updatePost(post) {
+    $.ajax({
+      method: "PUT",
+      url: "/api/posts",
+      data: post
+    })
+      .then(function () {
+        getPosts(currentUserID);
+      });
   }
   // Getting the initial list of Authors
   //getAuthors();
@@ -118,6 +204,9 @@ getPosts(currentUserID)
     // console.log(data + "dataaaa")
     console.log(data.name)
     var userN = data.name;
+    localStorage.setItem("username", data.name);
+    currentUsername = localStorage.getItem("username")
+    console.log(currentUsername)
     var userName = userN.toUpperCase();
     $(".current-log").html(userName);
     $(".current-log2").html("Hello " + userName + " !");

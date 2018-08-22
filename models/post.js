@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
   var Post = sequelize.define("Post", {
-    date: {
+    postedBy: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {

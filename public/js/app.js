@@ -90,7 +90,6 @@ $(document).ready(function() {
       var newPostCardBody = $("<div>");
       newPostCardBody.addClass("card-body");
       var newPostBody = $("<p>");
-      newPostTitle.text(post.title + " ");
       newPostBody.text(post.body);
       newPostDate.text(formattedDate);
       newPostTitle.append(newPostDate);
