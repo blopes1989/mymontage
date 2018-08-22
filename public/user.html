@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
   <link rel="stylesheet" href="vendors/css/vendor.bundle.addons.css">
   <!-- endinject -->
- 
+
   <!-- inject:css -->
   <link rel="stylesheet" href="css/style.css">
   <!-- endinject -->
@@ -49,20 +49,21 @@
         </ul>
         <!--End of links on nav bar-->
 
-     <!--Begins Hello User Link-->
-     <ul class="navbar-nav navbar-nav-right">
+        <!--Begins Hello User Link-->
+        <ul class="navbar-nav navbar-nav-right">
 
-        <li class="nav-item dropdown d-none d-xl-inline-block">
+          <li class="nav-item dropdown d-none d-xl-inline-block">
             <a class="nav-link" id="UserDropdown" href="user.html" aria-expanded="false">
-              <span class="profile-text">Hello, USER !</span>
-              <img class="img-xs rounded-circle" src="https://via.placeholder.com/140x100" alt="Profile image">
+              <span class="profile-text current-log"></span>
+              <img class="img-xs rounded-circle mini-profile-image"  alt="Profile image">
             </a>
           </li>
         </ul>
-        </div>
+      </div>
     </nav>
-<!--Ends Hello User Code-->         
-    </nav><!--end nav bar-->
+    <!--Ends Hello User Code-->
+    </nav>
+    <!--end nav bar-->
 
     <!--Starts Side Bar-->
     <div class="container-fluid page-body-wrapper">
@@ -73,7 +74,7 @@
             <div class="nav-link">
               <div class="user-wrapper">
 
-                <div class="profile-image" id="user-image" style="width:100px; height:100px;">
+                <div class="profile-image" id="user-image" style="width:100px; height:200px;">
                 </div>
               </div>
 
@@ -89,7 +90,8 @@
               <i class="menu-icon mdi mdi-television"></i>
               <span class="menu-title">Profile</span>
             </a>
-          </li><!--ends link-->
+          </li>
+          <!--ends link-->
 
           <!--Starts Settings Links-->
           <li class="nav-item">
@@ -97,7 +99,8 @@
               <i class="menu-icon mdi mdi-restart"></i>
               <span class="menu-title">Settings</span>
               <i class="menu-arrow"></i>
-            </a><!--ends settings link-->
+            </a>
+            <!--ends settings link-->
             <!--Starts Signout (sublink/drop down)-->
             <div class="collapse" id="auth">
               <ul class="nav flex-column sub-menu">
@@ -105,58 +108,65 @@
                   <a class="nav-link" href="pages/samples/login.html" id="signOut"> Signout </a>
                 </li>
               </ul>
-            </div><!--ends signout link-->
-          </li><!--ends nav-item-->
+            </div>
+            <!--ends signout link-->
+          </li>
+          <!--ends nav-item-->
         </ul>
-      </nav><!--ends side bar-->
+      </nav>
+      <!--ends side bar-->
 
 
       <!-- User Profile Table -->
       <div class="container mt-5 pt-5">
         <div class="row justify-content-center">
           <div class="col-md-3 mx-5">
-           <img src="https://via.placeholder.com/250x250" id="user-image">
+            <img class="main-profile-image">
           </div>
           <div class="col-md-1">
             <span id="bioColor">Bio</span>
-          </div><!--Ends biocolor-->
-
-          
-            <div class="col-md-5">
-              <span id="#"><b>Name:</b> John Doe</span>
-              <span id="#"><br><b>Birthday:</b> 01/01</span>
-              <span id="#"><br><b>Gender:</b> Male</span>
-              <span id="#"><br><b>Username:</b> Username</span>
-              <span id="#"><br><b>E-Mail:</b> johndoe@email.com</span>
-              <span id="#"><br><b>Posts:</b> 5</span>
-          </div><!--Ends Col-md-5-->
-        </div><!--Ends Row-->
-      </div><!--Ends Container-->
-        <!-- content-wrapper ends -->
-
-
-        <!-- partial:partials/_footer.html -->
-        <footer class="footer">
-          <div class="container-fluid clearfix">
           </div>
-        </footer>
-      </div>
-      <!--ends container-->
-      <!-- plugins:js -->
-      <script src="vendors/js/vendor.bundle.base.js"></script>
-      <script src="vendors/js/vendor.bundle.addons.js"></script>
-      <!-- endinject -->
+          <!--Ends biocolor-->
 
-      <!-- inject:js -->
-      <script src="js/off-canvas.js"></script>
-      <script src="js/misc.js"></script>
-      <!-- endinject -->
-      <!-- Custom js for this page-->
-      <script src="js/dashboard.js"></script>
-      <!-- End custom js for this page-->
-      <script src="js/userInfo.js" type="text/javascript"></script>
-      <script src="js/profile.js" type="text/javascript"></script>
-      <script src="js/survey.js" type="text/javascript"></script>
+
+          <div class="col-md-5">
+            <b>Name: <span class="info-name"></span></b>
+            <br><b>Birthday: <span class="info-birthday"></span></b>
+            <br><b>Gender: <span class="info-gender"></span></b>
+            <br><b>Username: <span class="info-username"></span></b>
+            <br><b>E-Mail: <span class="info-email"></span></b>
+            <br><b>Posts: <span class="info-posts"></span></b>
+          </div>
+          <!--Ends Col-md-5-->
+        </div>
+        <!--Ends Row-->
+      </div>
+      <!--Ends Container-->
+      <!-- content-wrapper ends -->
+
+
+      <!-- partial:partials/_footer.html -->
+      <footer class="footer">
+        <div class="container-fluid clearfix">
+        </div>
+      </footer>
+    </div>
+    <!--ends container-->
+    <!-- plugins:js -->
+    <script src="vendors/js/vendor.bundle.base.js"></script>
+    <script src="vendors/js/vendor.bundle.addons.js"></script>
+    <!-- endinject -->
+
+    <!-- inject:js -->
+    <script src="js/off-canvas.js"></script>
+    <script src="js/misc.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="js/dashboard.js"></script>
+    <!-- End custom js for this page-->
+    <script src="js/userInfo.js" type="text/javascript"></script>
+    <script src="js/profile.js" type="text/javascript"></script>
+    <script src="js/survey.js" type="text/javascript"></script>
 </body>
 
 </html>

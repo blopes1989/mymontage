@@ -2,7 +2,7 @@
 var currentUserName;
 var password;
 
-localStorage.removeItem("user");
+//localStorage.removeItem("user");
 
 $("#login-button").on("click", function () {
     event.preventDefault();

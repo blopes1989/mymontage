@@ -216,7 +216,7 @@ $(document).ready(function () {
     userImg.css("width", "200px");
     userImg.attr("src", data.profileImage);
     imgDiv.append(userImg);
-    $("#round-profile-img").attr("src", data.profileImage);
+    $(".mini-profile-image").attr("src", data.profileImage);
 
   });
 
