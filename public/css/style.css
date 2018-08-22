@@ -8505,4 +8505,11 @@ ul {
   .error-page .error-page-divider {
     border-left: 3px solid rgba(255, 255, 255, 0.2); } }
 
+
+  #bioColor{
+    color:rgba(148, 148, 148, 0.603);
+    font-weight: bold;
+    font-size: 18px;
+  };
+
 /*# sourceMappingURL=maps/style.css.map */

@@ -49,19 +49,19 @@
         </ul>
         <!--End of links on nav bar-->
 
-        <!--Begins Hello User Link-->
-        <ul class="navbar-nav navbar-nav-right">
+     <!--Begins Hello User Link-->
+     <ul class="navbar-nav navbar-nav-right">
 
-            <li class="nav-item dropdown d-none d-xl-inline-block">
-                <a class="nav-link" id="UserDropdown" href="user.html" aria-expanded="false">
-                  <span class="profile-text">Hello, USER !</span>
-                  <img class="img-xs rounded-circle" src="https://via.placeholder.com/140x100" alt="Profile image">
-                </a>
-              </li>
-            </ul>
-            </div>
-        </nav>
-  <!--Ends Hello User Code-->        
+        <li class="nav-item dropdown d-none d-xl-inline-block">
+            <a class="nav-link" id="UserDropdown" href="user.html" aria-expanded="false">
+              <span class="profile-text">Hello, USER !</span>
+              <img class="img-xs rounded-circle" src="https://via.placeholder.com/140x100" alt="Profile image">
+            </a>
+          </li>
+        </ul>
+        </div>
+    </nav>
+<!--Ends Hello User Code-->         
     </nav><!--end nav bar-->
 
     <!--Starts Side Bar-->
@@ -111,26 +111,25 @@
       </nav><!--ends side bar-->
 
 
-      <!-- partial -->
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-lg-8 mx-auto">
-            <form></form>
-            <div class="form-group">
-              <label for="newPost"></label>
-              <textarea class="form-control" id="newPost" rows="6"></textarea>
-              <button type="submit" class="btn btn-primary mb-2 float-right" id="submitPost" href="/cms">Post</button>
-            </div>
-            </form>
+      <!-- User Profile Table -->
+      <div class="container mt-5 pt-5">
+        <div class="row justify-content-center">
+          <div class="col-md-3 mx-5">
+           <img src="https://via.placeholder.com/250x250" id="user-image">
+          </div>
+          <div class="col-md-1">
+            <span id="bioColor">Bio</span>
+          </div>
+            <div class="col-md-5">
+              <b>Name:</b> John Doe
+              <br><b>Birthday:</b> 01/01
+              <br><b>Gender:</b> Male
+              <br><b>Username:</b> Username
+              <br><b>E-Mail:</b> johndoe@email.com
+              <br><b>Posts:</b> 5
           </div>
         </div>
-        <div class="row">
-          <div class="card  blog-container" id="timeline">
-            <div class="card-body">
-              <p class="card-text"></p>
-            </div>
-          </div>
-        </div>
+      </div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
@@ -146,14 +145,15 @@
       <!-- Plugin js for this page-->
       <!-- End plugin js for this page-->
       <!-- inject:js -->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.0/moment.min.js" type="text/javascript"></script>
       <script src="js/off-canvas.js"></script>
       <script src="js/misc.js"></script>
       <!-- endinject -->
       <!-- Custom js for this page-->
-      <!--<script src="js/dashboard.js"></script>-->
-      <script src="js/app.js"></script>
+      <script src="js/dashboard.js"></script>
       <!-- End custom js for this page-->
+
+      <script src="js/profile.js" type="text/javascript"></script>
+      <script src="js/survey.js" type="text/javascript"></script>
 </body>
 
 </html>
